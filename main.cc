@@ -19,11 +19,11 @@ int main(int argc, char** argv) {
 	G4RunManager *runManager = new G4RunManager();
 
 	// call user-created geometry
-	runManager->SetUserInitialization(new MyDetectorConstruction());
+	runManager->SetUserInitialization(new construction());
 	// call physics list
-	runManager->SetUserInitialization(new MyPhysicsList());
+	runManager->SetUserInitialization(new physics());
 	// call action initialization
-	runManager->SetUserInitialization(new MyActionInitialization());
+	runManager->SetUserInitialization(new action());
 
 	//initialize run manager
 	runManager->Initialize();

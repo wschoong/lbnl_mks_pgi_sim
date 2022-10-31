@@ -6,13 +6,13 @@
 
 #include "generator.hh"
 
-class MyActionInitialization : public G4VUserActionInitialization
+class action : public G4VUserActionInitialization
 {
 public:
     // constructor
-    MyActionInitialization();
+    action();
     // destructor
-    ~MyActionInitialization();
+    ~action();
 
     // define virtual function Build()
     virtual void Build() const;

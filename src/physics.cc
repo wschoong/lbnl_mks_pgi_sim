@@ -1,7 +1,7 @@
 #include "physics.hh"
 
 // define constructor
-MyPhysicsList::MyPhysicsList()
+physics::physics()
 {
     // define usable physics here
     // include only physics required, more physics implemented leads to longer simulation times
@@ -10,5 +10,5 @@ MyPhysicsList::MyPhysicsList()
 
 }
 
-MyPhysicsList::~MyPhysicsList()
+physics::~physics()
 {}

@@ -1,19 +1,19 @@
 #include "generator.hh"
 
-MyPrimaryGenerator::MyPrimaryGenerator()
+generator::generator()
 {
     // set particles per event
     G4int num_particles=1;
     fParticleGun = new G4ParticleGun(num_particles);
 }
 
-MyPrimaryGenerator::~MyPrimaryGenerator()
+generator::~generator()
 {
     delete fParticleGun;
 }
 
 // create function to define particle properties
-void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
+void generator::GeneratePrimaries(G4Event *anEvent)
 {
     // create table to define particle properties
     G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();

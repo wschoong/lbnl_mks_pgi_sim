@@ -13,13 +13,13 @@
 #include "G4PVPlacement.hh"
 
 // define detector construction class
-class MyDetectorConstruction : public G4VUserDetectorConstruction 
+class construction : public G4VUserDetectorConstruction 
 {
 public:
     // define constructor
-    MyDetectorConstruction();
+    construction();
     // define destructor
-    ~MyDetectorConstruction();
+    ~construction();
 
     // define function to create geometry
     //  virtual because defined in class

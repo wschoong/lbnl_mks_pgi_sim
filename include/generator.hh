@@ -8,13 +8,13 @@
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleTable.hh"
 
-class MyPrimaryGenerator : public G4VUserPrimaryGeneratorAction
+class generator : public G4VUserPrimaryGeneratorAction
 {
 public:
     // constructor
-    MyPrimaryGenerator();
+    generator();
     // destructor
-    ~MyPrimaryGenerator();
+    ~generator();
 
     // virtual function to generate primary particles
     virtual void GeneratePrimaries(G4Event*);

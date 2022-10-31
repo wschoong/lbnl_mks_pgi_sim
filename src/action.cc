@@ -3,15 +3,15 @@
 #include "action.hh"
 
 // import construction, destruction
-MyActionInitialization::MyActionInitialization()
+action::action()
 {}
-MyActionInitialization::~MyActionInitialization()
+action::~action()
 {}
 
 //define particle generator build
-void MyActionInitialization::Build() const
+void action::Build() const
 {
     // generate particles
-    MyPrimaryGenerator *generator = new MyPrimaryGenerator();
-    SetUserAction(generator);
+    generator *particleGenerator = new generator();
+    SetUserAction(particleGenerator);
 }
