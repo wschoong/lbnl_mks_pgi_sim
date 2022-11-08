@@ -2,13 +2,15 @@
 #define DETECTOR_HH
 
 #include "G4VSensitiveDetector.hh"
+#include <string>
+#include <map>
 
-class MySensitiveDetector : public G4VSensitiveDetector
+class PGIDetector : public G4VSensitiveDetector
 {
 // define constructor, destructor
 public:
-    MySensitiveDetector(G4String);
-    ~MySensitiveDetector();
+    PGIDetector(G4String);
+    ~PGIDetector();
 private:
     virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);
 };

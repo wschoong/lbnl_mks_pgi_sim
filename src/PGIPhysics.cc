@@ -1,7 +1,7 @@
-#include "physics.hh"
+#include "PGIPhysics.hh"
 
 // define constructor
-physics::physics()
+PGIPhysics::PGIPhysics()
 {
     // define usable physics here
     // include only physics required, more physics implemented leads to longer simulation times
@@ -10,5 +10,5 @@ physics::physics()
 
 }
 
-physics::~physics()
+PGIPhysics::~PGIPhysics()
 {}

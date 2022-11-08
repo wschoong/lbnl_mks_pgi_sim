@@ -6,9 +6,9 @@
 #include "G4UIExecutive.hh"
 #include "G4VisExecutive.hh"
 
-#include "construction.hh"
-#include "physics.hh"
-#include "action.hh"
+#include "PGIConstruction.hh"
+#include "PGIPhysics.hh"
+#include "PGIAction.hh"
 
 int main(int argc, char** argv) {
 
@@ -19,11 +19,11 @@ int main(int argc, char** argv) {
 	G4RunManager *runManager = new G4RunManager();
 
 	// call user-created geometry
-	runManager->SetUserInitialization(new construction());
+	runManager->SetUserInitialization(new PGIConstruction());
 	// call physics list
-	runManager->SetUserInitialization(new physics());
+	runManager->SetUserInitialization(new PGIPhysics());
 	// call action initialization
-	runManager->SetUserInitialization(new action());
+	runManager->SetUserInitialization(new PGIAction());
 
 	//initialize run manager
 	runManager->Initialize();

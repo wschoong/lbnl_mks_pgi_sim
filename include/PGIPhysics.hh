@@ -9,13 +9,13 @@
 #include "G4OpticalPhysics.hh"
 
 // define physics list class
-class physics : public G4VModularPhysicsList
+class PGIPhysics : public G4VModularPhysicsList
 {
 public:
     // define constructor
-    physics();
+    PGIPhysics();
     // define destructor
-    ~physics();
+    ~PGIPhysics();
 };
 
 #endif

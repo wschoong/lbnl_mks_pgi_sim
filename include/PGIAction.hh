@@ -4,15 +4,16 @@
 
 #include "G4VUserActionInitialization.hh"
 
-#include "generator.hh"
+#include "PGIGenerator.hh"
+#include "PGIRunAction.hh"
 
-class action : public G4VUserActionInitialization
+class PGIAction : public G4VUserActionInitialization
 {
 public:
     // constructor
-    action();
+    PGIAction();
     // destructor
-    ~action();
+    ~PGIAction();
 
     // define virtual function Build()
     virtual void Build() const;

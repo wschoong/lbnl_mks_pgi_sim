@@ -7,14 +7,15 @@
 #include "G4ParticleGun.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleTable.hh"
+#include "Randomize.hh"
 
-class generator : public G4VUserPrimaryGeneratorAction
+class PGIGenerator : public G4VUserPrimaryGeneratorAction
 {
 public:
     // constructor
-    generator();
+    PGIGenerator();
     // destructor
-    ~generator();
+    ~PGIGenerator();
 
     // virtual function to generate primary particles
     virtual void GeneratePrimaries(G4Event*);

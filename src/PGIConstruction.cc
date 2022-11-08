@@ -1,15 +1,15 @@
-#include "construction.hh"
+#include "PGIConstruction.hh"
 
-construction::construction()
+PGIConstruction::PGIConstruction()
 {}
-construction::~construction()
+PGIConstruction::~PGIConstruction()
 {}
 
-G4VPhysicalVolume *construction::Construct() 
+G4VPhysicalVolume *PGIConstruction::Construct() 
 {
 
-    G4double det_halfwidth=2.5*cm;
-    G4double spacing_halfwidth=0.25*cm;
+    G4double det_halfwidth=2.4*cm;
+    G4double spacing_halfwidth=0.2*cm;
     G4double total_halfwidth=det_halfwidth+spacing_halfwidth;
     G4double pixel_halfwidth=det_halfwidth/12;
 
@@ -55,12 +55,14 @@ G4VPhysicalVolume *construction::Construct()
 
     // detector volumes
     // labeled as:
-    // [0]  [1]  [2]  [3]
-    // [4]  [5]  [6]  [7]
-    // [8]  [9]  [10] [11]
-    // [12] [13] [14] [15]
+    // [3]  [2]  [1]  [0]
+    // [7]  [6]  [5]  [4]
+    // [11] [10] [9]  [8]
+    // [15] [14] [13] [12]
     //
-    // when looking in positive z-direction
+    // when looking in negative z-direction (from back of detector)
+
+    // pixels ordering goes left-to-right, top-to-bottom (as if you were reading in English) when viewed from the back fo the detector
 
     // Detector 0
 
@@ -70,12 +72,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother0, "physDetectorMother0",logicWorld ,false,0,true);
 
     G4Box *solidDetector0 = new G4Box("solidDetector0",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector0 = new G4LogicalVolume(solidDetector0,worldMat,"logicDetector0");
+    logicDetector0 = new G4LogicalVolume(solidDetector0,worldMat,"logicDetector0");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector0 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector0,"physDetector0",logicDetectorMother0,false,j+i*12,true);
         }
     }
@@ -88,12 +90,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother1, "physDetectorMother1",logicWorld ,false,0,true);
 
     G4Box *solidDetector1 = new G4Box("solidDetector1",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector1 = new G4LogicalVolume(solidDetector1,worldMat,"logicDetector1");
+    logicDetector1 = new G4LogicalVolume(solidDetector1,worldMat,"logicDetector1");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector1 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector1,"physDetector1",logicDetectorMother1,false,j+i*12,true);
         }
     }
@@ -106,12 +108,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother2, "physDetectorMother2",logicWorld ,false,0,true);
 
     G4Box *solidDetector2 = new G4Box("solidDetector2",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector2 = new G4LogicalVolume(solidDetector2,worldMat,"logicDetector2");
+    logicDetector2 = new G4LogicalVolume(solidDetector2,worldMat,"logicDetector2");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector2 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector2,"physDetector2",logicDetectorMother2,false,j+i*12,true);
         }
     }
@@ -124,12 +126,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother3, "physDetectorMother3",logicWorld ,false,0,true);
 
     G4Box *solidDetector3 = new G4Box("solidDetector3",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector3 = new G4LogicalVolume(solidDetector3,worldMat,"logicDetector3");
+    logicDetector3 = new G4LogicalVolume(solidDetector3,worldMat,"logicDetector3");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector3 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector3,"physDetector3",logicDetectorMother3,false,j+i*12,true);
         }
     }
@@ -142,12 +144,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother4, "physDetectorMother4",logicWorld ,false,0,true);
 
     G4Box *solidDetector4 = new G4Box("solidDetector4",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector4 = new G4LogicalVolume(solidDetector4,worldMat,"logicDetector0");
+    logicDetector4 = new G4LogicalVolume(solidDetector4,worldMat,"logicDetector0");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector4 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector4,"physDetector4",logicDetectorMother4,false,j+i*12,true);
         }
     }
@@ -160,12 +162,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother5, "physDetectorMother5",logicWorld ,false,0,true);
 
     G4Box *solidDetector5 = new G4Box("solidDetector5",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector5 = new G4LogicalVolume(solidDetector5,worldMat,"logicDetector5");
+    logicDetector5 = new G4LogicalVolume(solidDetector5,worldMat,"logicDetector5");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector5 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector5,"physDetector5",logicDetectorMother5,false,j+i*12,true);
         }
     }
@@ -178,12 +180,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother6, "physDetectorMother6",logicWorld ,false,0,true);
 
     G4Box *solidDetector6 = new G4Box("solidDetector6",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector6 = new G4LogicalVolume(solidDetector6,worldMat,"logicDetector6");
+    logicDetector6 = new G4LogicalVolume(solidDetector6,worldMat,"logicDetector6");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector6 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector6,"physDetector6",logicDetectorMother6,false,j+i*12,true);
         }
     }
@@ -196,12 +198,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother7, "physDetectorMother7",logicWorld ,false,0,true);
 
     G4Box *solidDetector7 = new G4Box("solidDetector7",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector7 = new G4LogicalVolume(solidDetector7,worldMat,"logicDetector7");
+    logicDetector7 = new G4LogicalVolume(solidDetector7,worldMat,"logicDetector7");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector7 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector7,"physDetector7",logicDetectorMother7,false,j+i*12,true);
         }
     }
@@ -214,12 +216,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother8, "physDetectorMother8",logicWorld ,false,0,true);
 
     G4Box *solidDetector8 = new G4Box("solidDetector8",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector8 = new G4LogicalVolume(solidDetector8,worldMat,"logicDetector8");
+    logicDetector8 = new G4LogicalVolume(solidDetector8,worldMat,"logicDetector8");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector8 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector8,"physDetector8",logicDetectorMother8,false,j+i*12,true);
         }
     }
@@ -232,12 +234,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother9, "physDetectorMother9",logicWorld ,false,0,true);
 
     G4Box *solidDetector9 = new G4Box("solidDetector9",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector9 = new G4LogicalVolume(solidDetector9,worldMat,"logicDetector9");
+    logicDetector9 = new G4LogicalVolume(solidDetector9,worldMat,"logicDetector9");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector9 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector9,"physDetector9",logicDetectorMother9,false,j+i*12,true);
         }
     }
@@ -250,12 +252,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother10, "physDetectorMother10",logicWorld ,false,0,true);
 
     G4Box *solidDetector10 = new G4Box("solidDetector10",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector10 = new G4LogicalVolume(solidDetector10,worldMat,"logicDetector10");
+    logicDetector10 = new G4LogicalVolume(solidDetector10,worldMat,"logicDetector10");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector10 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector10,"physDetector10",logicDetectorMother10,false,j+i*12,true);
         }
     }
@@ -268,12 +270,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother11, "physDetectorMother11",logicWorld ,false,0,true);
 
     G4Box *solidDetector11 = new G4Box("solidDetector11",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector11 = new G4LogicalVolume(solidDetector11,worldMat,"logicDetector11");
+    logicDetector11 = new G4LogicalVolume(solidDetector11,worldMat,"logicDetector11");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector11 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector11,"physDetector11",logicDetectorMother11,false,j+i*12,true);
         }
     }
@@ -286,12 +288,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother12, "physDetectorMother12",logicWorld ,false,0,true);
 
     G4Box *solidDetector12 = new G4Box("solidDetector12",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector12 = new G4LogicalVolume(solidDetector12,worldMat,"logicDetector12");
+    logicDetector12 = new G4LogicalVolume(solidDetector12,worldMat,"logicDetector12");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector12 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector12,"physDetector12",logicDetectorMother12,false,j+i*12,true);
         }
     }
@@ -304,12 +306,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother13, "physDetectorMother13",logicWorld ,false,0,true);
 
     G4Box *solidDetector13 = new G4Box("solidDetector13",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector13 = new G4LogicalVolume(solidDetector13,worldMat,"logicDetector13");
+    logicDetector13 = new G4LogicalVolume(solidDetector13,worldMat,"logicDetector13");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector13 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector13,"physDetector13",logicDetectorMother13,false,j+i*12,true);
         }
     }
@@ -322,12 +324,12 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother14, "physDetectorMother14",logicWorld ,false,0,true);
 
     G4Box *solidDetector14 = new G4Box("solidDetector14",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector14 = new G4LogicalVolume(solidDetector14,worldMat,"logicDetector14");
+    logicDetector14 = new G4LogicalVolume(solidDetector14,worldMat,"logicDetector14");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector14 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector14,"physDetector14",logicDetectorMother14,false,j+i*12,true);
         }
     }
@@ -340,16 +342,38 @@ G4VPhysicalVolume *construction::Construct()
     logicDetectorMother15, "physDetectorMother15",logicWorld ,false,0,true);
 
     G4Box *solidDetector15 = new G4Box("solidDetector15",det_halfwidth/12,det_halfwidth/12,0.25*cm);
-    G4LogicalVolume *logicDetector15 = new G4LogicalVolume(solidDetector15,worldMat,"logicDetector15");
+    logicDetector15 = new G4LogicalVolume(solidDetector15,worldMat,"logicDetector15");
 
     for (G4int i=0;i<12;i++){
         for (G4int j=0;j<12;j++){
             G4VPhysicalVolume *physDetector15 = new G4PVPlacement(0,
-            G4ThreeVector((2*i-11)*pixel_halfwidth,(2*j-11)*pixel_halfwidth,0.*m),
+            G4ThreeVector((11-2*i)*pixel_halfwidth,(11-2*j)*pixel_halfwidth,0.*m),
             logicDetector15,"physDetector15",logicDetectorMother15,false,j+i*12,true);
         }
     }
 
     return physWorld;
+}
+
+void PGIConstruction::ConstructSDandField()
+{
+    PGIDetector *sensDet = new PGIDetector("SensitiveDetector");
+
+    logicDetector0->SetSensitiveDetector(sensDet);
+    logicDetector1->SetSensitiveDetector(sensDet);
+    logicDetector2->SetSensitiveDetector(sensDet);
+    logicDetector3->SetSensitiveDetector(sensDet);
+    logicDetector4->SetSensitiveDetector(sensDet);
+    logicDetector5->SetSensitiveDetector(sensDet);
+    logicDetector6->SetSensitiveDetector(sensDet);
+    logicDetector7->SetSensitiveDetector(sensDet);
+    logicDetector8->SetSensitiveDetector(sensDet);
+    logicDetector9->SetSensitiveDetector(sensDet);
+    logicDetector10->SetSensitiveDetector(sensDet);
+    logicDetector11->SetSensitiveDetector(sensDet);
+    logicDetector12->SetSensitiveDetector(sensDet);
+    logicDetector13->SetSensitiveDetector(sensDet);
+    logicDetector14->SetSensitiveDetector(sensDet);
+    logicDetector15->SetSensitiveDetector(sensDet);
 
 }
