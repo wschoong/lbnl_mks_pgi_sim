@@ -55,6 +55,8 @@ int main(int argc, char** argv) {
 	UImanager->ApplyCommand("/vis/modeling/trajectories/drawByParticleID-0/set neutron green");
 	UImanager->ApplyCommand("/vis/modeling/trajectories/drawByParticleID-0/set proton red");
 
+	UImanager->ApplyCommand("/vis/scene/add/axes");
+
 	UImanager->ApplyCommand("/run/beamOn");
 
 	ui -> SessionStart();

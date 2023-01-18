@@ -26,22 +26,22 @@ public:
 
     virtual G4VPhysicalVolume *Construct();
 private:
-    G4LogicalVolume *logicDetector0;
+    // G4LogicalVolume *logicDetector0;
     G4LogicalVolume *logicDetector1;
-    G4LogicalVolume *logicDetector2;
-    G4LogicalVolume *logicDetector3;
-    G4LogicalVolume *logicDetector4;
-    G4LogicalVolume *logicDetector5;
-    G4LogicalVolume *logicDetector6;
-    G4LogicalVolume *logicDetector7;
-    G4LogicalVolume *logicDetector8;
-    G4LogicalVolume *logicDetector9;
-    G4LogicalVolume *logicDetector10;
-    G4LogicalVolume *logicDetector11;
-    G4LogicalVolume *logicDetector12;
-    G4LogicalVolume *logicDetector13;
-    G4LogicalVolume *logicDetector14;
-    G4LogicalVolume *logicDetector15;
+    // G4LogicalVolume *logicDetector2;
+    // G4LogicalVolume *logicDetector3;
+    // G4LogicalVolume *logicDetector4;
+    // G4LogicalVolume *logicDetector5;
+    // G4LogicalVolume *logicDetector6;
+    // G4LogicalVolume *logicDetector7;
+    // G4LogicalVolume *logicDetector8;
+    // G4LogicalVolume *logicDetector9;
+    // G4LogicalVolume *logicDetector10;
+    // G4LogicalVolume *logicDetector11;
+    // G4LogicalVolume *logicDetector12;
+    // G4LogicalVolume *logicDetector13;
+    // G4LogicalVolume *logicDetector14;
+    // G4LogicalVolume *logicDetector15;
     virtual void ConstructSDandField();
 
 
