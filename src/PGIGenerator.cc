@@ -1,7 +1,7 @@
 #include "PGIGenerator.hh"
 
 // set number of particles to generate
-G4int num_particles=100;
+G4int num_particles=1;
 
 PGIGenerator::PGIGenerator()
 {
@@ -30,9 +30,9 @@ void PGIGenerator::GeneratePrimaries(G4Event *anEvent)
     for (G4int i=0;i<num_particles;i++)
     {
         // random isotropic sampling (only in positive z direction)
-        G4double xdir=2*G4UniformRand()-1;
-        G4double ydir=2*G4UniformRand()-1;
-        G4double zdir=0.5*G4UniformRand()+0.5;
+        G4double xdir=-1;
+        G4double ydir=0;
+        G4double zdir=0;
         G4ThreeVector mom(xdir,ydir,zdir);
 
         //give particle parameters
