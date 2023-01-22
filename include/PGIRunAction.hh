@@ -6,7 +6,6 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
-#include <stdio.h>
 
 class PGIRunAction : public G4UserRunAction
 {

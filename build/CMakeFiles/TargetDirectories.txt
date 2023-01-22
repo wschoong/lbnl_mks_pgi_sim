@@ -1,4 +1,0 @@
-/home/oscmatousek/Downloads/lbnl_mks_pgi_sim_Elijah_test/build/CMakeFiles/edit_cache.dir
-/home/oscmatousek/Downloads/lbnl_mks_pgi_sim_Elijah_test/build/CMakeFiles/rebuild_cache.dir
-/home/oscmatousek/Downloads/lbnl_mks_pgi_sim_Elijah_test/build/CMakeFiles/mks_pgi.dir
-/home/oscmatousek/Downloads/lbnl_mks_pgi_sim_Elijah_test/build/CMakeFiles/main.dir
