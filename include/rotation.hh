@@ -21,9 +21,9 @@ float xyrot(const std::vector<std::vector<float>>& xy){
     return rotation;
 }
 std::vector<float> findcenter(const std::vector<std::vector<float>>& corners){
-    float centerx = corners[1][0]+corners[2][0] / 2;
-    float centery = corners[1][1]+corners[2][1] /2;
-    float centerz = corners[1][2]+corners[2][2] /2;
+    float centerx = (corners[1][0]+corners[2][0]) /2;
+    float centery = (corners[1][1]+corners[2][1]) /2;
+    float centerz = (corners[1][2]+corners[2][2]) /2;
     std::vector<float> center = {centerx,centery,centerz};
     return center;
 }
